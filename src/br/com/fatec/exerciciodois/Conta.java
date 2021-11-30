@@ -10,7 +10,7 @@ public class Conta {
 	String nomePessoa = pessoa.getNome();
 	String cpfPessoa = pessoa.getCpf();
 	String aniversarioPessoa = pessoa.getDataAniversario();
-	int numeroConta;
+	String numeroConta;
 	String tipoConta;
 	
 	public Pessoa getPessoa() {
@@ -37,10 +37,10 @@ public class Conta {
 	public void setAniversarioPessoa(String aniversarioPessoa) {
 		this.aniversarioPessoa = aniversarioPessoa;
 	}
-	public int getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
-	public void setNumeroConta(int numeroConta) {
+	public void setNumeroConta(String numeroConta) {
 		this.numeroConta = numeroConta;
 	}
 	public String getTipoConta() {
