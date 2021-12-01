@@ -22,6 +22,17 @@ public class AgenciaBancaria {
 		System.out.println("0 - Sair");
 		System.out.println("Opção: ");
 	}
+	
+	public static void repetir() {
+		@SuppressWarnings("resource")
+		Scanner cons = new Scanner(System.in);
+		ArrayList<Conta> agencia = new ArrayList<Conta>();
+		Set<Conta> cpfSet = new HashSet<Conta>();
+		Conta conta;
+
+//			Conta ct = new Conta();
+		conta = new Conta();
+	}
 
 	public static void inclui() {
 		System.out.println("Você entrou no método Inclui.");
@@ -30,78 +41,97 @@ public class AgenciaBancaria {
 		ArrayList<Conta> agencia = new ArrayList<Conta>();
 		Set<Conta> cpfSet = new HashSet<Conta>();
 		Conta conta;
-		
-		for (int i = 0; i < 3; i++) {
-			Conta ct = new Conta();
-			conta = new Conta();
-			String cpf;
-			System.out.println("Digite o nome do cliente: ");
-			conta.setNomePessoa(cons.nextLine());
-			System.out.println("Digite o número do CPF do cliente: ");
-		    conta.setCpfPessoa(cons.nextLine());
-		    cpfSet.add(conta);
-		    System.out.println("Digite a data de aniversário do cliente: ");
-		    conta.setAniversarioPessoa(cons.nextLine());
-		    System.out.println("Digite o número da nova conta: ");
-		    conta.setNumeroConta(cons.nextLine());
-		    System.out.println("Digite o tipo de conta: ");
-		    conta.setTipoConta(cons.nextLine());
-		    agencia.add(conta);
-		    
-			System.out.println("----------------------------");
-		}
-	}
 
-//	public static void altera() {
-//		System.out.println("Você entrou no método Altera.");
-//	}
+//			Conta ct = new Conta();
+		conta = new Conta();
+//			String cpf;
+		System.out.println("Digite o nome do cliente: ");
+		conta.setNomePessoa(cons.next());
+		System.out.println("Digite o número do CPF do cliente: ");
+		conta.setCpfPessoa(cons.next());
+		cpfSet.add(conta);
+		System.out.println("Digite a data de aniversário do cliente: ");
+		conta.setAniversarioPessoa(cons.next());
+		System.out.println("Digite o número da nova conta: ");
+		conta.setNumeroConta(cons.next());
+		System.out.println("Digite o tipo de conta: ");
+		conta.setTipoConta(cons.next());
+		agencia.add(conta);
+		
+		System.out.println(conta.getNomePessoa());
+		System.out.println(conta.getCpfPessoa());
+		System.out.println(conta.getAniversarioPessoa());
+		System.out.println(conta.getNumeroConta());
+		System.out.println(conta.getTipoConta());
+		
+		System.out.println("----------------------------");		
+		
+	}
 
 	public static void consulta() {
-		System.out.println("Você entrou no método Consulta.");
+//		@SuppressWarnings("resource")
+//		Scanner cons = new Scanner(System.in);
+//		ArrayList<Conta> agencia = new ArrayList<Conta>();
+//		Set<Conta> cpfSet = new HashSet<Conta>();
+		
+		Conta conta;
+				
+//		System.out.println(conta.getNomePessoa());
+		
+		for (int n = 0; n < agencia.size(); n++) {
+			conta = (Conta) agencia.get(n);
+			System.out.println("Informações de Cliente: \n" + "Nome do Cliente: " + conta.getNomePessoa() + "\n"
+					+ "CPF do Cliente: " + conta.getCpfPessoa() + "\n" + "Data de Aniversário do Cliente: "
+					+ conta.getAniversarioPessoa() + "\n" + "Número da Conta: " + conta.getNumeroConta() + "\n"
+					+ "Tipo de Conta: " + conta.getTipoConta() + "\n");
+			
+			System.out.println(conta.getNomePessoa());
+		}
+
 	}
-	
+
 	public static void exclui() {
 		System.out.println("Você entrou no método Exclui.");
 	}
-	
+
 	public static void dadosPessoa() {
 		System.out.println("Você entrou no método Consulta.");
 	}
 
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner cons = new Scanner(System.in);
-		ArrayList<Conta> agencia = new ArrayList<Conta>();
-		Conta conta;
-		
-		//Menu
+//		@SuppressWarnings("resource")
+//		Scanner cons = new Scanner(System.in);
+//		ArrayList<Conta> agencia = new ArrayList<Conta>();
+//		Conta conta;
+
+		// Menu
 		int opcao;
 		Scanner entrada = new Scanner(System.in);
-		
+
 		do {
 			menu();
 			opcao = entrada.nextInt();
-			
-			switch(opcao) {
+
+			switch (opcao) {
 			case 1:
 				inclui();
 				break;
-				
+
 			case 2:
 				consulta();
 				break;
-			
+
 			case 3:
 				exclui();
 				break;
-				
+
 			case 4:
 				dadosPessoa();
 				break;
-				
+
 			default:
 				System.out.println("Opção Inválida.");
-			} 
+			}
 		} while (opcao != 0);
 	}
 
