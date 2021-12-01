@@ -125,7 +125,7 @@ public class AgenciaBancaria {
 
 		String entrada;
 
-		System.out.println("Digite o número do CPF do cliente você deseja consultar os dados: ");
+		System.out.println("Digite o número do CPF do cliente que você deseja consultar os dados: ");
 		entrada = sc.next();
 
 		for (int n = 0; n < agencia.size(); n++) {
