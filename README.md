@@ -3,12 +3,12 @@
 ### Nome: Ana Beatriz Silva de Araujo Leite
 ### RA: 1460282123057
 
-### Instruções (Opção 1):
-* 1 - Acessar o arquivo anexo
-* 2 - Implementar classes conforme descrito no arquivo anexo
+### Instruções:
+* 1 - Acessar o arquivo anexo.
+* 2 - Implementar classes conforme descrito no arquivo em anexo.
 * 3 - Adicionar um exemplo codificado por você de Collections Frameworks, além dos resolvidos nos exercícios.
-* 4 - Postar no seu git e colocar o link aqui
-* 5 - Apresentar codificação na aula do dia 16/11
+* 4 - Postar no seu git e colocar o link no Teams.
+* 5 - Apresentar codificação na aula do dia 16/11.
 
 ### Descrição das pastas:
 * src > main > br > com > fatec > exercicioum: implementar uma Concessionaria utilizando ArrayList e Map.
