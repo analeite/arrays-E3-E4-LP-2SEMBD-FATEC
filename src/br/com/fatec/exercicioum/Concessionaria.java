@@ -5,86 +5,145 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+
+import br.com.fatec.exerciciodois.Conta;
 import br.com.fatec.exercicioum.Carro;
 
 public class Concessionaria {
 
+	public static void menu() {
+		System.out.println("-----Cadastro de Carros-----");
+		System.out.println("------------Menu------------");
+		System.out.println("----------------------------");
+		System.out.println("1 - Cadastrar Novo Carro");
+		System.out.println("2 - Listar Carros Cadastrados");
+		System.out.println("3 - Listar Tabela de Preços");
+		System.out.println("4 - Listar Dados dos Carros");
+		System.out.println("0 - Sair");
+		System.out.println("Opção: ");
+	}
+
 	public static void main(String[] args) {
+		ArrayList<Carro> loja = new ArrayList<Carro>();
+
+		// Menu
+		int opcao;
+		Scanner entrada = new Scanner(System.in);
+
+		do {
+			menu();
+			opcao = entrada.nextInt();
+
+			switch (opcao) {
+			case 1:
+				adicionarCarro(loja);
+				break;
+
+			case 2:
+				listarCarro(loja);
+				break;
+
+			case 3:
+				imprimirTabelaPreco(loja);
+				break;
+
+			case 4:
+				listarDadosCarro(loja);
+				break;
+
+			default:
+				System.out.println("Opção Inválida.");
+			}
+		} while (opcao != 0);
+	}
+
+	static void adicionarCarro(ArrayList<Carro> loja) {
+
 		@SuppressWarnings("resource")
 		Scanner cons = new Scanner(System.in);
-		ArrayList<Carro> loja = new ArrayList<Carro>();
-		Carro Car;
-
-		System.out.println("Cadastro de Carros: ");
-		System.out.println("---------------------------");
-
-		// Definindo a quantidade de Carro a serem inseridas no ArrayList
-		Scanner contador = new Scanner(System.in);
-		System.out.println("Digite a quantidade de carros que você deseja cadastrar: ");
-		int cont = contador.nextInt();
-		System.out.println("---------------------------");
-
-		// Adicionando carros no ArrayList
-		for (int i = 0; i < cont; i++) {
-			Car = new Carro();
-			System.out.printf("Carro %d:\n", i);
-			System.out.println("Digite o nome do carro: ");
-			Car.setNome(cons.next());
-			System.out.println("Digite o marca do carro: ");
-			Car.setMarca(cons.next());
-			System.out.println("Digite o ano do carro: ");
-			Car.setAno(cons.nextInt());
-			System.out.println("Digite a cor do carro: ");
-			Car.setCor(cons.next());
-			System.out.println("Digite a placa do carro: ");
-			Car.setPlaca(cons.next());
-			loja.add(Car);
-			System.out.println("---------------------------");
-		}
-
-		// Listando ArrayList
-		for (int n = 0; n < loja.size(); n++) {
-			Car = (Carro) loja.get(n);
-			System.out.printf("Carro %d: %s, %s, %d, %s, %s\n", n, Car.getNome(), Car.getMarca(), Car.getAno(),
-					Car.getCor(), Car.getPlaca());
-			System.out.println("---------------------------");
-		}
-
-		// Map
 		Map<String, Object> mapaTabela = new HashMap<String, Object>();
 
-		for (int c = 0; c < loja.size(); c++) {
-			String preco;
-			Scanner tabela = new Scanner(System.in);
-			System.out.printf("Preço de Tabela do Carro %d: ", c);
-			preco = tabela.nextLine();
+		String preco;
 
-			Car = (Carro) loja.get(c);
+		Carro car = new Carro();
 
-			mapaTabela.put(preco, Car.getNome());
+		// Adicionando carros no ArrayList
+		System.out.println("Digite o nome do carro: ");
+		car.setNome(cons.nextLine());
+		System.out.println("Digite o marca do carro: ");
+		car.setMarca(cons.nextLine());
+		System.out.println("Digite o ano do carro: ");
+		car.setAno(cons.nextLine());
+		System.out.println("Digite a cor do carro: ");
+		car.setCor(cons.nextLine());
+		System.out.println("Digite a placa do carro: ");
+		car.setPlaca(cons.nextLine());
+		System.out.println("Digite o preço de tabela do carro: ");
+		car.setPrecoTabela(cons.next());
+		preco = car.getPrecoTabela();
+		mapaTabela.put(preco, car.getNome());
 
-			System.out.println("---------------------------");
+		loja.add(car);
 
-			for (Map.Entry<String, Object> entry : mapaTabela.entrySet()) {
-				// Dados Carro
-				System.out.println("Dados dos Carros Cadastrados: ");
-				System.out.println("Carro: " + Car.getNome() + "\n" + "Marca: " + Car.getMarca() + "\n" + "Ano: "
-						+ Car.getAno() + "\n" + "Cor: " + Car.getCor() + "\n" + "Placa: " + Car.getPlaca() + "\n"
-						+ "Preço da Tabela: " + entry.getKey());
-				
-				System.out.println("---------------------------");
-			}
+		System.out.println("\n----------------------------\n");
+	}
 
+	static void listarCarro(ArrayList<Carro> loja) {
+		// Listando ArrayList
+		for (Carro car : loja) {
+
+			System.out.println("\n----------------------------\n");
+
+			System.out.println("Informações do Carro: \n" + "Nome do Carro: " + car.getNome() + "\n"
+					+ "Placa do Carro: " + car.getPlaca());
+			System.out.println("\n----------------------------\n");
 		}
+	}
 
-		// TabelaPreco
-		System.out.println("Tabela de Carros Cadastrados: ");
-		for (Map.Entry<String, Object> entry : mapaTabela.entrySet()) {
-			System.out.println("Carro: " + entry.getValue() + " | " + "Preço de Tabela: " + entry.getKey() + "\n");
-		}
+	static void imprimirTabelaPreco(ArrayList<Carro> loja) {
 		
-		System.out.println("---------------------------");
+		// Listando TabelaPreco
+		for (Carro car : loja) {
+
+			System.out.println("\n----------------------------\n");
+
+			System.out.println("Informações do Carro: \n" + "Nome do Carro: " + car.getNome() + "\n"
+					+ "Placa do Carro: " + car.getPlaca() + "\n" + "Preço de Tabela: " + car.getPrecoTabela());
+			System.out.println("\n----------------------------\n");
+		}
 
 	}
 
+	static void listarDadosCarro(ArrayList<Carro> loja) {
+		
+		for (int c = 0; c < loja.size(); c++) {
+
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(System.in);
+
+			String entrada;
+
+			System.out.println("Digite o número da placa do carro que você deseja consultar os dados: ");
+			entrada = sc.next();
+
+			for (int n = 0; n < loja.size(); n++) {
+
+				Carro car = loja.get(n);
+
+				if (car.getPlaca().equals(entrada)) {
+
+					System.out.println("\n----------------------------\n");
+
+					System.out.println("Informações do Carro: \n" + "Nome do Carro: " + car.getNome() + "\n"
+							+ "Marca do Carro: " + car.getMarca() + "\n" + "Cor do Carro: " + car.getCor() + "\n"
+							+ "Placa do Carro: " + car.getPlaca() + "\n" + "Ano do Carro: " + car.getAno() + "\n"
+							+ "Preço de Tabela do Carro: " + car.getPrecoTabela());
+
+					System.out.println("\n----------------------------");
+				}
+
+			}
+
+		}
+	}
 }
